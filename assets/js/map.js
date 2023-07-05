@@ -2,7 +2,7 @@ var map = L.map('map', {
     center: [-15.840651, -70.027987],
     zoom: 18,
     minZoom: 10,
-    maxZoom: 20,
+    maxZoom: 40,
     maxBounds: [[-17.595,-72.2969], [-12.5142,-68.3892]]
   });
   
@@ -35,6 +35,24 @@ version: '1.1.1',
 attribution: "SENCICO"
 });
 puno.addTo(map);
+
+var provincias = L.tileLayer.wms("http://localhost:8080/geoserver/webpuno/wms?", {
+layers: "webpuno:provincias", 
+format: 'image/png',
+transparent: true,
+version: '1.1.1',
+attribution: "SENCICO"
+});
+provincias.addTo(map);
+
+var distritos = L.tileLayer.wms("http://localhost:8080/geoserver/webpuno/wms?", {
+layers: "webpuno:distritos", 
+format: 'image/png',
+transparent: true,
+version: '1.1.1',
+attribution: "SENCICO"
+});
+distritos.addTo(map);
 
 var bancos = L.tileLayer.wms("http://localhost:8080/geoserver/webpuno/wms?", {
 layers: "webpuno:bancos", 
@@ -108,6 +126,8 @@ var baseMaps    ={
 
 var overlayMaps ={
 "Departamento de Puno":puno,
+"Provincias de Puno":provincias,
+"Distritos de Puno":distritos,
 "Bancos":bancos,
 "Colegios":colegios,
 "Boticas":farmacias,
