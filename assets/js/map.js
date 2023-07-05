@@ -36,6 +36,23 @@ attribution: "SENCICO"
 });
 puno.addTo(map);
 
+var provincias = L.tileLayer.wms("http://localhost:8080/geoserver/webpuno/wms?", {
+layers: "webpuno:provincias", 
+format: 'image/png',
+transparent: true,
+version: '1.1.1',
+attribution: "SENCICO"
+});
+provincias.addTo(map);
+
+var distritos = L.tileLayer.wms("http://localhost:8080/geoserver/webpuno/wms?", {
+layers: "webpuno:distritos", 
+format: 'image/png',
+transparent: true,
+version: '1.1.1',
+attribution: "SENCICO"
+});
+distritos.addTo(map);
 var bancos = L.tileLayer.wms("http://localhost:8080/geoserver/webpuno/wms?", {
 layers: "webpuno:bancos", 
 format: 'image/png',
@@ -108,6 +125,8 @@ var baseMaps    ={
 
 var overlayMaps ={
 "Departamento de Puno":puno,
+"Provincias":provincias,
+"Distritos":distritos,
 "Bancos":bancos,
 "Colegios":colegios,
 "Boticas":farmacias,
